@@ -13,7 +13,7 @@ today_datetime=$(date '+%Y-%m-%d %H:%M:%S')
 
 
 # Get the latest event video
-video=$(sqlite3 /mnt/PASSPORT/tesla.db -cmd ".timeout 5000" "SELECT VideoName,CameraSide FROM Videos AS v WHERE VideoName LIKE strftime('%Y%m%d') || '%E' AND NOT EXISTS (SELECT 1 FROM uploads WHERE VideoName = v.VideoName AND CameraSide = v.CameraSide) ORDER BY VIDEONAME DESC LIMIT 1;")
+video=$(sqlite3 /mnt/PASSPORT/tesla.db -cmd ".timeout 5000" "SELECT VideoName,CameraSide FROM Videos AS v WHERE (VideoName LIKE strftime('%Y%m%d') || '%E' OR VideoName LIKE strftime('%Y%m%d','now','-1 day') || '%E') AND NOT EXISTS (SELECT 1 FROM uploads WHERE VideoName = v.VideoName AND CameraSide = v.CameraSide) ORDER BY VIDEONAME DESC LIMIT 1;")
 video_mode="Event Mode"
 
 if [[ -n "${video// /}" ]]; then
@@ -21,7 +21,7 @@ if [[ -n "${video// /}" ]]; then
 	true
 else
 	# Event video not found
-	video=$(sqlite3 /mnt/PASSPORT/tesla.db -cmd ".timeout 5000" "SELECT VideoName,CameraSide FROM Videos AS v WHERE VideoName LIKE strftime('%Y%m%d') || '%P' AND NOT EXISTS (SELECT 1 FROM uploads WHERE VideoName = v.VideoName AND CameraSide = v.CameraSide) ORDER BY VIDEONAME DESC LIMIT 1;")
+	video=$(sqlite3 /mnt/PASSPORT/tesla.db -cmd ".timeout 5000" "SELECT VideoName,CameraSide FROM Videos AS v WHERE (VideoName LIKE strftime('%Y%m%d') || '%P' OR VideoName LIKE strftime('%Y%m%d','now','-1 day') || '%P') AND NOT EXISTS (SELECT 1 FROM uploads WHERE VideoName = v.VideoName AND CameraSide = v.CameraSide) ORDER BY VIDEONAME DESC LIMIT 1;")
 	video_mode="Parking Mode"
 	if [[ -n "${video// /}" ]]; then
 		# Parking video found
