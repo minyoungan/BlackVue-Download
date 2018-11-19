@@ -20,13 +20,13 @@ for file in `curl http://$DASHCAM_IP/blackvue_vod.cgi | sed 's/^n://' | sed 's/F
 	# Front Video
 	wget -c http://$DASHCAM_IP$file\F.mp4;
 	if [ -f $VIDEONAME\F.mp4 ]; then
-		sqlite3 /mnt/PASSPORT/tesla.db  "INSERT OR IGNORE INTO videos(VideoName,CameraSide) VALUES('$VIDEONAME','F');"
+		sqlite3 /mnt/PASSPORT/tesla.db -cmd ".timeout 5000" "INSERT OR IGNORE INTO videos(VideoName,CameraSide) VALUES('$VIDEONAME','F');"
 	fi
 
 	# Left Video
 	wget -c http://$DASHCAM_IP$file\R.mp4;
 	if [ -f $VIDEONAME\R.mp4 ]; then
-		sqlite3 /mnt/PASSPORT/tesla.db  "INSERT OR IGNORE INTO videos(VideoName,CameraSide) VALUES('$VIDEONAME','L');"
+		sqlite3 /mnt/PASSPORT/tesla.db -cmd ".timeout 5000" "INSERT OR IGNORE INTO videos(VideoName,CameraSide) VALUES('$VIDEONAME','L');"
 	fi
 
 	wget -nc http://$DASHCAM_IP$file\F.thm;
