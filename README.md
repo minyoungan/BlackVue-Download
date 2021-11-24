@@ -13,12 +13,15 @@ Download all files from 4 channel Blackvue dash cams to your external hard drive
 ### Executing program
 
 For 4 channel Blackvue dash cams, please run both blackvue_front_today.sh and blackvue_back_today.sh
+```
+sh blackvue_front_today.sh
+sh blackvue_back_today.sh
+```
 
 For 1 or 2 channel Blackvue dash cams, please run blackvue_front_today.sh
 
 ```
 sh blackvue_front_today.sh
-sh blackvue_back_today.sh
 ```
 For uploading videos to Youtube, lease run blackvue_youtube_upload.sh
 
