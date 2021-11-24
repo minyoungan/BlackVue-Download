@@ -2,7 +2,7 @@
 
 ## Description
 
-Download all files from 4 channel Blackvue dash cams to your external hard drive.
+Download all files from 4 channel Blackvue dashcams to your external hard drive.
 
 ## Getting Started
 
