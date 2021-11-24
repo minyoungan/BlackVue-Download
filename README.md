@@ -19,6 +19,10 @@ For 1 or 2 channel Blackvue dash cams, please run blackvue_front_today.sh
 ```
 sh blackvue_front_today.sh
 sh blackvue_back_today.sh
+```
+For uploading videos to Youtube, lease run blackvue_youtube_upload.sh
+
+```
 sh blackvue_youtube_upload.sh
 ```
 
