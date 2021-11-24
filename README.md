@@ -25,7 +25,7 @@ sh blackvue_youtube_upload.sh
 ## Authors
 
 Minyoung An
-@minyoung_an
+[@minyoung_an](https://www.instagram.com/minyoung_an/)
 
 ## Version History
 
